@@ -1,0 +1,20 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2sgcfvjv46s3"]
+
+[ext_resource type="Script" uid="uid://b2noumbb4nber" path="res://samplePlayer.gd" id="1_8bn17"]
+[ext_resource type="Script" uid="uid://nf3gwkf36jj8" path="res://addons/SimpleSampler/sampler_instrument.gd" id="2_1ftms"]
+[ext_resource type="Script" uid="uid://beypwonbhv6pf" path="res://addons/SimpleSampler/sample_resource.gd" id="3_0lhry"]
+[ext_resource type="Resource" path="res://samples/synth/B4.tres" id="4_0ibrq"]
+[ext_resource type="Resource" path="res://samples/synth/C#5.tres" id="5_4ofsq"]
+[ext_resource type="Resource" uid="uid://4fky4fiaq5cv" path="res://samples/synth/E4.tres" id="6_4p23x"]
+[ext_resource type="Resource" uid="uid://b17jir0nea6wb" path="res://samples/synth/E5.tres" id="7_jtreq"]
+[ext_resource type="Resource" uid="uid://or0rpm8mm2fx" path="res://samples/synth/G#4.tres" id="8_j8b8d"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_8bn17")
+
+[node name="SamplerInstrument" type="AudioStreamPlayer" parent="Node2D"]
+script = ExtResource("2_1ftms")
+samples = Array[ExtResource("3_0lhry")]([ExtResource("4_0ibrq"), ExtResource("5_4ofsq"), ExtResource("6_4p23x"), ExtResource("7_jtreq"), ExtResource("8_j8b8d")])
+metadata/_custom_type_script = "uid://nf3gwkf36jj8"
