@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2sgcfvjv46s3"]
+[gd_scene load_steps=13 format=3 uid="uid://c2sgcfvjv46s3"]
 
-[ext_resource type="Script" uid="uid://b2noumbb4nber" path="res://samplePlayer.gd" id="1_8bn17"]
+[ext_resource type="Script" uid="uid://b2noumbb4nber" path="res://scripts/samplePlayer.gd" id="1_8bn17"]
 [ext_resource type="Script" uid="uid://nf3gwkf36jj8" path="res://addons/SimpleSampler/sampler_instrument.gd" id="2_1ftms"]
 [ext_resource type="Script" uid="uid://beypwonbhv6pf" path="res://addons/SimpleSampler/sample_resource.gd" id="3_0lhry"]
 [ext_resource type="Resource" path="res://samples/synth/B4.tres" id="4_0ibrq"]
@@ -8,13 +8,142 @@
 [ext_resource type="Resource" uid="uid://4fky4fiaq5cv" path="res://samples/synth/E4.tres" id="6_4p23x"]
 [ext_resource type="Resource" uid="uid://b17jir0nea6wb" path="res://samples/synth/E5.tres" id="7_jtreq"]
 [ext_resource type="Resource" uid="uid://or0rpm8mm2fx" path="res://samples/synth/G#4.tres" id="8_j8b8d"]
+[ext_resource type="Script" uid="uid://c28abnvkvktmr" path="res://scripts/loop_editor.gd" id="9_0ibrq"]
+[ext_resource type="PackedScene" uid="uid://bdoubd0dnmqx1" path="res://prefabs/note.tscn" id="9_1ftms"]
+[ext_resource type="PackedScene" uid="uid://de3o64mf5plhc" path="res://prefabs/player.tscn" id="10_0lhry"]
+[ext_resource type="PackedScene" uid="uid://csrestlgtb7x6" path="res://prefabs/note_spawner.tscn" id="11_4ofsq"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.346278, 0.46067, 0.533999, 1)
+
+[node name="SamplePlayer" type="Node2D" parent="."]
 script = ExtResource("1_8bn17")
 
-[node name="SamplerInstrument" type="AudioStreamPlayer" parent="Node2D"]
+[node name="SamplerInstrument" type="AudioStreamPlayer" parent="SamplePlayer"]
 script = ExtResource("2_1ftms")
 samples = Array[ExtResource("3_0lhry")]([ExtResource("4_0ibrq"), ExtResource("5_4ofsq"), ExtResource("6_4p23x"), ExtResource("7_jtreq"), ExtResource("8_j8b8d")])
 metadata/_custom_type_script = "uid://nf3gwkf36jj8"
+
+[node name="Fret" type="Node2D" parent="."]
+
+[node name="Background" type="ColorRect" parent="Fret"]
+offset_right = 1280.0
+offset_bottom = 112.0
+color = Color(0.237539, 0.237539, 0.237539, 1)
+
+[node name="Lines" type="Node2D" parent="Fret"]
+
+[node name="horizontal1" type="ColorRect" parent="Fret/Lines"]
+offset_top = 16.0
+offset_right = 1280.0
+offset_bottom = 17.0
+color = Color(0, 0, 0, 1)
+
+[node name="horizontal2" type="ColorRect" parent="Fret/Lines"]
+offset_top = 32.0
+offset_right = 1280.0
+offset_bottom = 33.0
+color = Color(0, 0, 0, 1)
+
+[node name="horizontal3" type="ColorRect" parent="Fret/Lines"]
+offset_top = 48.0
+offset_right = 1280.0
+offset_bottom = 49.0
+color = Color(0, 0, 0, 1)
+
+[node name="horizontal4" type="ColorRect" parent="Fret/Lines"]
+offset_top = 64.0
+offset_right = 1280.0
+offset_bottom = 65.0
+color = Color(0, 0, 0, 1)
+
+[node name="horizontal5" type="ColorRect" parent="Fret/Lines"]
+offset_top = 80.0
+offset_right = 1280.0
+offset_bottom = 81.0
+color = Color(0, 0, 0, 1)
+
+[node name="horizontal6" type="ColorRect" parent="Fret/Lines"]
+offset_top = 96.0
+offset_right = 1280.0
+offset_bottom = 97.0
+color = Color(0, 0, 0, 1)
+
+[node name="vertical" type="ColorRect" parent="Fret/Lines"]
+offset_left = 64.0
+offset_right = 65.0
+offset_bottom = 112.0
+
+[node name="Loops" type="Node2D" parent="."]
+
+[node name="NoteEditor" type="Node2D" parent="."]
+position = Vector2(1024, 609)
+script = ExtResource("9_0ibrq")
+
+[node name="Background" type="ColorRect" parent="NoteEditor"]
+offset_right = 256.0
+offset_bottom = 112.0
+color = Color(0.237539, 0.237539, 0.237539, 1)
+
+[node name="Lines" type="Node2D" parent="NoteEditor"]
+
+[node name="horizontal1" type="ColorRect" parent="NoteEditor/Lines"]
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 17.0
+color = Color(0, 0, 0, 1)
+
+[node name="horizontal2" type="ColorRect" parent="NoteEditor/Lines"]
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 33.0
+color = Color(0, 0, 0, 1)
+
+[node name="horizontal3" type="ColorRect" parent="NoteEditor/Lines"]
+offset_top = 48.0
+offset_right = 256.0
+offset_bottom = 49.0
+color = Color(0, 0, 0, 1)
+
+[node name="horizontal4" type="ColorRect" parent="NoteEditor/Lines"]
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 65.0
+color = Color(0, 0, 0, 1)
+
+[node name="horizontal5" type="ColorRect" parent="NoteEditor/Lines"]
+offset_top = 80.0
+offset_right = 256.0
+offset_bottom = 81.0
+color = Color(0, 0, 0, 1)
+
+[node name="horizontal6" type="ColorRect" parent="NoteEditor/Lines"]
+offset_top = 96.0
+offset_right = 256.0
+offset_bottom = 97.0
+color = Color(0, 0, 0, 1)
+
+[node name="Notes" type="Node2D" parent="NoteEditor"]
+position = Vector2(-1024, -609)
+
+[node name="Note" parent="NoteEditor/Notes" instance=ExtResource("9_1ftms")]
+position = Vector2(1024, 609)
+
+[node name="NoteSpawner" parent="." node_paths=PackedStringArray("notes") instance=ExtResource("11_4ofsq")]
+position = Vector2(251, 0)
+notes = NodePath("../NoteEditor/Notes")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 251.0
+offset_right = 1284.0
+offset_bottom = 112.0
+color = Color(0.0605303, 0.0605303, 0.0605303, 1)
+
+[node name="Player" parent="." instance=ExtResource("10_0lhry")]
+position = Vector2(435, 455.145)
+motion_mode = 1
+up_direction = Vector2(0, 1)
