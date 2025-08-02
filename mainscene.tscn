@@ -33,7 +33,58 @@ metadata/_custom_type_script = "uid://beypwonbhv6pf"
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1280.0
 offset_bottom = 720.0
-color = Color(0.0547306, 0.0900513, 0.112547, 1)
+color = Color(0.756646, 0.759194, 0.755397, 1)
+
+[node name="Player" parent="." instance=ExtResource("10_0lhry")]
+position = Vector2(435, 455.145)
+up_direction = Vector2(0, 1)
+
+[node name="HealthBar" parent="." instance=ExtResource("19_8gyya")]
+position = Vector2(705, 414)
+
+[node name="WaveManager" type="Node2D" parent="."]
+script = ExtResource("13_4p23x")
+enemies = Array[PackedScene]([ExtResource("14_jtreq"), ExtResource("15_2dgxd")])
+
+[node name="SpawnPoints" type="Node2D" parent="WaveManager"]
+
+[node name="Node2D" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(-86, 197)
+
+[node name="Node2D2" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(-144, 353)
+
+[node name="Node2D3" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(-85, 476)
+
+[node name="Node2D4" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(-52, 647)
+
+[node name="Node2D5" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(180, 809)
+
+[node name="Node2D6" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(397, 758)
+
+[node name="Node2D7" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(646, 855)
+
+[node name="Node2D8" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(831, 780)
+
+[node name="Node2D9" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(1062, 851)
+
+[node name="Node2D10" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(1321, 516)
+
+[node name="Node2D11" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(1377, 349)
+
+[node name="Node2D12" type="Node2D" parent="WaveManager/SpawnPoints"]
+position = Vector2(1329, 189)
+
+[node name="Enemies" type="Node2D" parent="WaveManager"]
 
 [node name="SamplePlayer" type="Node2D" parent="."]
 script = ExtResource("1_8bn17")
@@ -114,11 +165,13 @@ offset_top = 17.0
 offset_right = 256.0
 offset_bottom = 32.0
 color = Color(0.213515, 0.249755, 0.209818, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Background4" type="ColorRect" parent="NoteEditor"]
 offset_right = 256.0
 offset_bottom = 16.0
 color = Color(0.299866, 0.216661, 0.172, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Lines" type="Node2D" parent="NoteEditor"]
 
@@ -127,36 +180,42 @@ offset_top = 16.0
 offset_right = 256.0
 offset_bottom = 17.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="horizontal2" type="ColorRect" parent="NoteEditor/Lines"]
 offset_top = 32.0
 offset_right = 256.0
 offset_bottom = 33.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="horizontal3" type="ColorRect" parent="NoteEditor/Lines"]
 offset_top = 48.0
 offset_right = 256.0
 offset_bottom = 49.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="horizontal4" type="ColorRect" parent="NoteEditor/Lines"]
 offset_top = 64.0
 offset_right = 256.0
 offset_bottom = 65.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="horizontal5" type="ColorRect" parent="NoteEditor/Lines"]
 offset_top = 80.0
 offset_right = 256.0
 offset_bottom = 81.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="horizontal6" type="ColorRect" parent="NoteEditor/Lines"]
 offset_top = 96.0
 offset_right = 256.0
 offset_bottom = 97.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Notes" type="Node2D" parent="NoteEditor"]
 position = Vector2(-1024, -609)
@@ -181,54 +240,6 @@ offset_right = 1284.0
 offset_bottom = 112.0
 color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
-[node name="Player" parent="." instance=ExtResource("10_0lhry")]
-position = Vector2(435, 455.145)
-up_direction = Vector2(0, 1)
-
-[node name="WaveManager" type="Node2D" parent="."]
-script = ExtResource("13_4p23x")
-enemies = Array[PackedScene]([ExtResource("14_jtreq"), ExtResource("15_2dgxd")])
-
-[node name="SpawnPoints" type="Node2D" parent="WaveManager"]
-
-[node name="Node2D" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(-86, 197)
-
-[node name="Node2D2" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(-144, 353)
-
-[node name="Node2D3" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(-85, 476)
-
-[node name="Node2D4" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(-52, 647)
-
-[node name="Node2D5" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(180, 809)
-
-[node name="Node2D6" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(397, 758)
-
-[node name="Node2D7" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(646, 855)
-
-[node name="Node2D8" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(831, 780)
-
-[node name="Node2D9" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(1062, 851)
-
-[node name="Node2D10" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(1321, 516)
-
-[node name="Node2D11" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(1377, 349)
-
-[node name="Node2D12" type="Node2D" parent="WaveManager/SpawnPoints"]
-position = Vector2(1329, 189)
-
-[node name="Enemies" type="Node2D" parent="WaveManager"]
-
 [node name="NotesLeft" type="RichTextLabel" parent="."]
 offset_left = 1024.0
 offset_top = 584.0
@@ -238,6 +249,3 @@ theme_override_fonts/normal_font = ExtResource("15_lc52x")
 theme_override_font_sizes/normal_font_size = 24
 text = "Notes: 0"
 script = ExtResource("15_j8b8d")
-
-[node name="HealthBar" parent="." instance=ExtResource("19_8gyya")]
-position = Vector2(705, 414)
