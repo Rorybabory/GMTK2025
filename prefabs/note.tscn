@@ -8,11 +8,11 @@ script = ExtResource("1_rufh6")
 [node name="bkg" type="ColorRect" parent="."]
 offset_right = 16.0
 offset_bottom = 16.0
-color = Color(0.40611, 0.25534, 0.154546, 1)
+color = Color(0.150665, 0.320078, 0.391417, 1)
 
 [node name="main" type="ColorRect" parent="."]
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 15.0
 offset_bottom = 15.0
-color = Color(0.679084, 0.437202, 0.252275, 1)
+color = Color(0.188194, 0.555341, 0.630899, 1)

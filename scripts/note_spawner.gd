@@ -10,6 +10,7 @@ func spawnNote():
 		var newNote = noteScene.instantiate()
 		get_node("../Loops").add_child(newNote)
 		newNote.active = true
+		newNote.type = note.type
 		newNote.global_position = global_position + note.pos
 	
 func _process(delta: float) -> void:

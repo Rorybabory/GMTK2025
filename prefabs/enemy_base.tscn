@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn2uv4cjn4gss"]
+
+[ext_resource type="Script" uid="uid://c5e4dey8gtyxu" path="res://scripts/enemy_base.gd" id="1_i1yvi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1yvi"]
+size = Vector2(116, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvysm"]
+size = Vector2(8, 14)
+
+[node name="EnemyBase" type="CharacterBody2D" groups=["Enemy"]]
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_i1yvi")
+
+[node name="Sprite2D" type="ColorRect" parent="."]
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 144.0
+offset_bottom = 112.0
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+color = Color(0.779484, 0.242735, 0.307038, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="ColorRect" parent="."]
+offset_left = 16.0
+offset_top = -2.0
+offset_right = 32.0
+offset_bottom = 30.0
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+color = Color(0.323804, 0.104854, 0.148819, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0)
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_i1yvi")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(17, 0)
+shape = SubResource("RectangleShape2D_nvysm")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

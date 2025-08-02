@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2eprsd2ernry"]
+
+[ext_resource type="Script" uid="uid://brynvxiwkmwvv" path="res://scripts/enemy_shoot.gd" id="1_3kd6w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1yvi"]
+size = Vector2(116, 128)
+
+[node name="EnemyShoot" type="CharacterBody2D" groups=["Enemy"]]
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_3kd6w")
+
+[node name="Sprite2D" type="ColorRect" parent="."]
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 144.0
+offset_bottom = 112.0
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+color = Color(0.66482, 0.00297564, 0.926929, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="ColorRect" parent="."]
+offset_left = 16.0
+offset_top = -2.0
+offset_right = 32.0
+offset_bottom = 30.0
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+color = Color(0.323804, 0.104854, 0.148819, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0)
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_i1yvi")
