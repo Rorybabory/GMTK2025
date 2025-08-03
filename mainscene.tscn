@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c2sgcfvjv46s3"]
+[gd_scene load_steps=37 format=3 uid="uid://c2sgcfvjv46s3"]
 
 [ext_resource type="Script" uid="uid://b2noumbb4nber" path="res://scripts/samplePlayer.gd" id="1_8bn17"]
 [ext_resource type="Script" uid="uid://nf3gwkf36jj8" path="res://addons/SimpleSampler/sampler_instrument.gd" id="2_1ftms"]
@@ -14,22 +14,66 @@
 [ext_resource type="PackedScene" uid="uid://de3o64mf5plhc" path="res://prefabs/player.tscn" id="10_0lhry"]
 [ext_resource type="PackedScene" uid="uid://csrestlgtb7x6" path="res://prefabs/note_spawner.tscn" id="11_4ofsq"]
 [ext_resource type="Script" uid="uid://dpwku77oj3rn5" path="res://scripts/wave_spawner.gd" id="13_4p23x"]
+[ext_resource type="AudioStream" uid="uid://dea3qcsb4j453" path="res://samples/synth2/C2.wav" id="14_jbpqh"]
 [ext_resource type="PackedScene" uid="uid://dn2uv4cjn4gss" path="res://prefabs/enemy_base.tscn" id="14_jtreq"]
 [ext_resource type="PackedScene" uid="uid://d2eprsd2ernry" path="res://prefabs/enemy_shoot.tscn" id="15_2dgxd"]
+[ext_resource type="AudioStream" uid="uid://brdd1r5jrsk7" path="res://samples/synth2/E2.wav" id="15_ewkxy"]
 [ext_resource type="Script" uid="uid://b76xdwwprjo32" path="res://scripts/notes_left_text.gd" id="15_j8b8d"]
 [ext_resource type="FontFile" uid="uid://drjedxt85r8kl" path="res://fonts/Bangers-Regular.ttf" id="15_lc52x"]
+[ext_resource type="AudioStream" uid="uid://c0414pselphxt" path="res://samples/synth2/F1.wav" id="16_5au1j"]
 [ext_resource type="Texture2D" uid="uid://br88ae1rqlwyq" path="res://sprites/highlight.png" id="16_sm3u2"]
+[ext_resource type="Texture2D" uid="uid://both23dj3x4dp" path="res://sprites/hatching.png" id="17_qvxvv"]
 [ext_resource type="Texture2D" uid="uid://bttvlnxsm5n8" path="res://sprites/box1.png" id="17_xf0pi"]
+[ext_resource type="AudioStream" uid="uid://cdgqgkp7j8vh0" path="res://samples/synth2/G#2.wav" id="17_xkysf"]
 [ext_resource type="Texture2D" uid="uid://dnvvmb61xu04k" path="res://sprites/lineLong.png" id="18_w2c5i"]
 [ext_resource type="PackedScene" uid="uid://bvxrwjtgem75t" path="res://prefabs/health_bar.tscn" id="19_8gyya"]
+[ext_resource type="Texture2D" uid="uid://bw8ylrs2vybex" path="res://sprites/loopifier.png" id="23_312mw"]
+[ext_resource type="Shader" uid="uid://54qypm5ftlpd" path="res://overlay.gdshader" id="23_xf0pi"]
+[ext_resource type="Texture2D" uid="uid://88e80dog0xev" path="res://PAPER!!!!.png" id="24_w2c5i"]
 
-[sub_resource type="Resource" id="Resource_x1mr1"]
+[sub_resource type="Resource" id="Resource_ewkxy"]
 script = ExtResource("3_0lhry")
 stream = ExtResource("9_2dgxd")
 tone = "C"
 octave = 4
 velocity = 5
 metadata/_custom_type_script = "uid://beypwonbhv6pf"
+
+[sub_resource type="Resource" id="Resource_x1mr1"]
+script = ExtResource("3_0lhry")
+stream = ExtResource("14_jbpqh")
+tone = "C"
+octave = 2
+velocity = 5
+metadata/_custom_type_script = "uid://beypwonbhv6pf"
+
+[sub_resource type="Resource" id="Resource_dgcol"]
+script = ExtResource("3_0lhry")
+stream = ExtResource("15_ewkxy")
+tone = "E"
+octave = 2
+velocity = 5
+metadata/_custom_type_script = "uid://beypwonbhv6pf"
+
+[sub_resource type="Resource" id="Resource_5of3b"]
+script = ExtResource("3_0lhry")
+stream = ExtResource("16_5au1j")
+tone = "F"
+octave = 1
+velocity = 5
+metadata/_custom_type_script = "uid://beypwonbhv6pf"
+
+[sub_resource type="Resource" id="Resource_7b6ne"]
+script = ExtResource("3_0lhry")
+stream = ExtResource("17_xkysf")
+tone = "G#"
+octave = 2
+velocity = 5
+metadata/_custom_type_script = "uid://beypwonbhv6pf"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2c5i"]
+shader = ExtResource("23_xf0pi")
+shader_parameter/paper = ExtResource("24_w2c5i")
 
 [node name="Node2D" type="Node2D"]
 
@@ -99,7 +143,13 @@ metadata/_custom_type_script = "uid://nf3gwkf36jj8"
 
 [node name="Drums" type="AudioStreamPlayer" parent="SamplePlayer"]
 script = ExtResource("2_1ftms")
-samples = Array[ExtResource("3_0lhry")]([SubResource("Resource_x1mr1")])
+samples = Array[ExtResource("3_0lhry")]([SubResource("Resource_ewkxy")])
+metadata/_custom_type_script = "uid://nf3gwkf36jj8"
+
+[node name="Synth" type="AudioStreamPlayer" parent="SamplePlayer"]
+volume_db = -10.0
+script = ExtResource("2_1ftms")
+samples = Array[ExtResource("3_0lhry")]([SubResource("Resource_x1mr1"), SubResource("Resource_dgcol"), SubResource("Resource_5of3b"), SubResource("Resource_7b6ne")])
 metadata/_custom_type_script = "uid://nf3gwkf36jj8"
 
 [node name="Fret" type="Node2D" parent="."]
@@ -107,55 +157,94 @@ metadata/_custom_type_script = "uid://nf3gwkf36jj8"
 [node name="Background" type="ColorRect" parent="Fret"]
 offset_right = 255.0
 offset_bottom = 112.0
-color = Color(0.237539, 0.237539, 0.237539, 1)
+color = Color(0.899258, 0.899258, 0.899258, 1)
+
+[node name="Background6" type="TextureRect" parent="Fret"]
+modulate = Color(0.836383, 0.522944, 0.30619, 1)
+offset_left = -6.0
+offset_top = -2.0
+offset_right = 250.0
+offset_bottom = 15.0
+scale = Vector2(1.04457, 1.26949)
+texture = ExtResource("16_sm3u2")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Background7" type="TextureRect" parent="Fret"]
+modulate = Color(0.499186, 0.675418, 0.267052, 1)
+offset_left = -6.0
+offset_top = 14.0
+offset_right = 250.0
+offset_bottom = 31.0
+scale = Vector2(1.04457, 1.26949)
+texture = ExtResource("16_sm3u2")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Background8" type="TextureRect" parent="Fret"]
+modulate = Color(0.32549, 0.670588, 0.705882, 1)
+offset_left = -6.0
+offset_top = 30.0
+offset_right = 250.0
+offset_bottom = 47.0
+scale = Vector2(1.04457, 1.26949)
+texture = ExtResource("16_sm3u2")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Lines" type="Node2D" parent="Fret"]
 
-[node name="horizontal1" type="ColorRect" parent="Fret/Lines"]
-offset_top = 16.0
-offset_right = 1280.0
-offset_bottom = 17.0
-color = Color(0, 0, 0, 1)
+[node name="LineLong3" type="Sprite2D" parent="Fret/Lines"]
+position = Vector2(179, 49)
+scale = Vector2(0.351, 0.249)
+texture = ExtResource("18_w2c5i")
 
-[node name="horizontal2" type="ColorRect" parent="Fret/Lines"]
-offset_top = 32.0
-offset_right = 1280.0
-offset_bottom = 33.0
-color = Color(0, 0, 0, 1)
+[node name="LineLong4" type="Sprite2D" parent="Fret/Lines"]
+position = Vector2(179, 64)
+scale = Vector2(0.351, 0.249)
+texture = ExtResource("18_w2c5i")
 
-[node name="horizontal3" type="ColorRect" parent="Fret/Lines"]
-offset_top = 48.0
-offset_right = 1280.0
-offset_bottom = 49.0
-color = Color(0, 0, 0, 1)
+[node name="LineLong" type="Sprite2D" parent="Fret/Lines"]
+position = Vector2(140.863, 16.74)
+scale = Vector2(0.275, 0.232)
+texture = ExtResource("18_w2c5i")
 
-[node name="horizontal4" type="ColorRect" parent="Fret/Lines"]
-offset_top = 64.0
-offset_right = 1280.0
-offset_bottom = 65.0
-color = Color(0, 0, 0, 1)
+[node name="LineLong2" type="Sprite2D" parent="Fret/Lines"]
+position = Vector2(142, 32)
+scale = Vector2(0.275, 0.232)
+texture = ExtResource("18_w2c5i")
 
-[node name="horizontal5" type="ColorRect" parent="Fret/Lines"]
-offset_top = 80.0
-offset_right = 1280.0
-offset_bottom = 81.0
-color = Color(0, 0, 0, 1)
+[node name="LineLong5" type="Sprite2D" parent="Fret/Lines"]
+position = Vector2(139.8, 80.74)
+scale = Vector2(0.275, 0.232)
+texture = ExtResource("18_w2c5i")
 
-[node name="horizontal6" type="ColorRect" parent="Fret/Lines"]
-offset_top = 96.0
-offset_right = 1280.0
-offset_bottom = 97.0
-color = Color(0, 0, 0, 1)
+[node name="LineLong6" type="Sprite2D" parent="Fret/Lines"]
+position = Vector2(140.937, 96)
+scale = Vector2(0.275, 0.232)
+texture = ExtResource("18_w2c5i")
 
 [node name="vertical" type="ColorRect" parent="Fret/Lines"]
-offset_left = 64.0
-offset_right = 65.0
+offset_left = 63.0
+offset_right = 66.0
 offset_bottom = 112.0
+color = Color(0, 0, 0, 1)
+
+[node name="LineLong7" type="Sprite2D" parent="Fret"]
+position = Vector2(671, 114)
+scale = Vector2(1.36914, 1.2)
+texture = ExtResource("18_w2c5i")
+
+[node name="LineLong8" type="Sprite2D" parent="Fret"]
+position = Vector2(251.096, 57.3311)
+rotation = -1.57079
+scale = Vector2(0.115317, 0.619152)
+texture = ExtResource("18_w2c5i")
 
 [node name="Loops" type="Node2D" parent="."]
 
 [node name="NoteEditor" type="Node2D" parent="."]
-position = Vector2(1017, 601)
+position = Vector2(1024, 608)
 script = ExtResource("9_0ibrq")
 
 [node name="Background" type="ColorRect" parent="NoteEditor"]
@@ -184,10 +273,16 @@ texture = ExtResource("16_sm3u2")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Box1" type="Sprite2D" parent="NoteEditor"]
-position = Vector2(127, 55.5)
-scale = Vector2(0.263672, 0.279018)
-texture = ExtResource("17_xf0pi")
+[node name="Background6" type="TextureRect" parent="NoteEditor"]
+modulate = Color(0.323825, 0.671314, 0.703947, 1)
+offset_left = -7.0
+offset_top = 30.0
+offset_right = 249.0
+offset_bottom = 47.0
+scale = Vector2(1.04457, 1.26949)
+texture = ExtResource("16_sm3u2")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Lines" type="Node2D" parent="NoteEditor"]
 
@@ -236,20 +331,26 @@ position = Vector2(-1017, -601)
 position = Vector2(1015, 602)
 type = 0
 
-[node name="Background2" type="ColorRect" parent="NoteEditor"]
-offset_top = 33.0
-offset_right = 256.0
-offset_bottom = 112.0
+[node name="blocker" type="ColorRect" parent="NoteEditor"]
+offset_left = 256.0
+offset_top = 113.0
+offset_right = 512.0
+offset_bottom = 209.0
+rotation = 3.14159
+
+[node name="Box1" type="Sprite2D" parent="NoteEditor"]
+position = Vector2(127, 55.5)
+scale = Vector2(0.263672, 0.279018)
+texture = ExtResource("17_xf0pi")
+
+[node name="Loopifier" type="Sprite2D" parent="NoteEditor"]
+position = Vector2(212, 139)
+scale = Vector2(0.153, 0.153)
+texture = ExtResource("23_312mw")
 
 [node name="NoteSpawner" parent="." node_paths=PackedStringArray("notes") instance=ExtResource("11_4ofsq")]
 position = Vector2(251, 0)
 notes = NodePath("../NoteEditor/Notes")
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 251.0
-offset_right = 1284.0
-offset_bottom = 112.0
-color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
 [node name="NotesLeft" type="RichTextLabel" parent="."]
 offset_left = 1013.0
@@ -261,3 +362,22 @@ theme_override_fonts/normal_font = ExtResource("15_lc52x")
 theme_override_font_sizes/normal_font_size = 24
 text = "Notes: 0"
 script = ExtResource("15_j8b8d")
+
+[node name="fret_blocker" type="ColorRect" parent="."]
+offset_left = 251.0
+offset_right = 1284.0
+offset_bottom = 112.0
+
+[node name="fret_hatching" type="TextureRect" parent="."]
+offset_left = 251.0
+offset_right = 10201.0
+offset_bottom = 1755.0
+scale = Vector2(0.105231, 0.0655363)
+texture = ExtResource("17_qvxvv")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_w2c5i")
+offset_right = 1283.0
+offset_bottom = 724.0

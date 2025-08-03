@@ -6,7 +6,8 @@ enum NoteType {PIANO, DRUM, SYNTH}
 var active : bool = false
 var pos : Vector2 = Vector2(0.0,0.0)
 var playing : bool = false;
-
+var distance : float = 10000.0
+var color : Color = Color.BLACK
 @export var type : NoteType = NoteType.SYNTH
 
 var colors : Array[Array] = [
@@ -31,7 +32,11 @@ func _ready():
 	pass
 
 func _process(delta: float) -> void:
+	if (type > 2):
+		type = 0
+	distance = global_position.x - 64.0
 	$bkg.modulate = colors[type][1]
+	color = colors[type][1]
 	if (active):
 		global_position.x -= delta * Globals.speed
 	pass
@@ -44,6 +49,8 @@ func _process(delta: float) -> void:
 				Globals.playNote.emit()
 			elif (type == NoteType.DRUM):
 				Globals.playDrums.emit()
+			elif (type == NoteType.SYNTH):
+				Globals.playSynth.emit()
 		$solid.show()
 	else:
 		$solid.hide()

@@ -6,6 +6,7 @@ func _ready():
 	pass
 
 func _process(delta: float) -> void:
+	$blocker.size.y = float(96 - int(Globals.waveNumber/4) * 16)
 	if (Input.is_action_just_pressed("click") and Globals.freeNotes > 0):
 		var mouse_pos = get_global_mouse_position()
 		var mouse_bounded = get_global_mouse_position() - global_position;
@@ -13,9 +14,11 @@ func _process(delta: float) -> void:
 			mouse_bounded.y > 112 or mouse_bounded.y < 0):
 			return
 		mouse_pos.x = floor(mouse_pos.x/16.0)*16.0;
-		mouse_pos.y = floor(mouse_pos.y/16.0)*16.0+1.0;
+		mouse_pos.y = floor(mouse_pos.y/16.0)*16.0;
 		var type = int((mouse_pos.y - global_position.y)/16)
-		if (type > 1):
+		if (type > Globals.waveNumber/4):
+			return
+		if (type > 2):
 			return
 		#create a note
 		var inst : Note = noteScene.instantiate()

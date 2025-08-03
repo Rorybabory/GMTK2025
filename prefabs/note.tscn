@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cbi0ww30fjo04" path="res://sprites/note.png" id="3_eo14v"]
 [ext_resource type="Texture2D" uid="uid://cfessy48q1v7j" path="res://sprites/note_solid.png" id="4_eo14v"]
 
-[node name="Note" type="Node2D"]
+[node name="Note" type="Node2D" groups=["Note"]]
 script = ExtResource("1_rufh6")
 
 [node name="bkg" type="TextureRect" parent="."]

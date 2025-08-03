@@ -23,10 +23,10 @@ func _process(delta: float) -> void:
 	var rot = dir.angle()
 	
 	if (state == "chase"):
-		rotation = rot
+		rotation += delta * 3.0
 		velocity += dir * delta * accel;
 	elif (state == "flee"):
-		rotation = rot
+		rotation += delta * 10.0
 		velocity += -dir * delta * accel;
 		stateTimer+=delta
 		if (stateTimer > 3.0):

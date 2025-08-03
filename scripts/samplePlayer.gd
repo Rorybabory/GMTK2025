@@ -22,6 +22,26 @@ var choords : Array[Array] = [
 	[["A", 3]],
 	[["D", 3]],
 ]
+var choords_synth : Array[Array] = [
+	[["C", 2]],
+	[["C", 2]],
+	[["C", 2]],
+	[["C", 2]],
+	[["G", 2]],
+	[["G", 2]],
+	[["G", 2]],
+	[["G", 2]],
+	[["G", 2]],
+	[["A", 2]],
+	[["A", 2]],
+	[["A", 2]],
+	[["A", 2]],
+	[["F", 3]],
+	[["F", 3]],
+	[["F", 3]],
+	[["F", 3]],
+	[["F", 3]],
+]
 #var choords : Array[Array] = [
 	#[["B", 4], ["G#", 4], ["D#", 4], ["G#", 2]],
 	#[["B", 4], ["G#", 4], ["D#", 4], ["G#", 2]],
@@ -40,9 +60,10 @@ var timer = 0.0;
 func _ready():
 	Globals.playNote.connect(playChoord)
 	Globals.playDrums.connect(playDrum)
+	Globals.playSynth.connect(playSynth)
 func playChoord():
 	$Keys.release()
-	var str = "playing: ";
+	var str = "(keys) playing: ";
 	for note in choords[choord_num]:
 		str += (note[0] + str(note[1]) + " ")
 		$Keys.play_note(note[0], note[1])  
@@ -51,5 +72,11 @@ func playChoord():
 	pass
 func playDrum():
 	$Drums.play_note("C", 4)
+func playSynth():
+	$Synth.release()
+	var str = "(synth) playing: ";
+	for note in choords_synth[choord_num]:
+		str += (note[0] + str(note[1]) + " ")
+		$Synth.play_note(note[0], note[1])  
 func _process(delta: float) -> void:
 	pass

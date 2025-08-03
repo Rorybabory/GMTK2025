@@ -33,6 +33,7 @@ enabled=PackedStringArray("res://addons/SimpleSampler/plugin.cfg")
 
 Player=""
 Enemy=""
+Note=""
 
 [input]
 
