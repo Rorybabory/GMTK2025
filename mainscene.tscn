@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2sgcfvjv46s3"]
+[gd_scene load_steps=24 format=3 uid="uid://c2sgcfvjv46s3"]
 
 [ext_resource type="Script" uid="uid://b2noumbb4nber" path="res://scripts/samplePlayer.gd" id="1_8bn17"]
 [ext_resource type="Script" uid="uid://nf3gwkf36jj8" path="res://addons/SimpleSampler/sampler_instrument.gd" id="2_1ftms"]
@@ -18,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://d2eprsd2ernry" path="res://prefabs/enemy_shoot.tscn" id="15_2dgxd"]
 [ext_resource type="Script" uid="uid://b76xdwwprjo32" path="res://scripts/notes_left_text.gd" id="15_j8b8d"]
 [ext_resource type="FontFile" uid="uid://drjedxt85r8kl" path="res://fonts/Bangers-Regular.ttf" id="15_lc52x"]
+[ext_resource type="Texture2D" uid="uid://br88ae1rqlwyq" path="res://sprites/highlight.png" id="16_sm3u2"]
+[ext_resource type="Texture2D" uid="uid://bttvlnxsm5n8" path="res://sprites/box1.png" id="17_xf0pi"]
+[ext_resource type="Texture2D" uid="uid://dnvvmb61xu04k" path="res://sprites/lineLong.png" id="18_w2c5i"]
 [ext_resource type="PackedScene" uid="uid://bvxrwjtgem75t" path="res://prefabs/health_bar.tscn" id="19_8gyya"]
 
 [sub_resource type="Resource" id="Resource_x1mr1"]
@@ -152,42 +155,51 @@ offset_bottom = 112.0
 [node name="Loops" type="Node2D" parent="."]
 
 [node name="NoteEditor" type="Node2D" parent="."]
-position = Vector2(1024, 609)
+position = Vector2(1017, 601)
 script = ExtResource("9_0ibrq")
 
 [node name="Background" type="ColorRect" parent="NoteEditor"]
 offset_right = 256.0
 offset_bottom = 112.0
-color = Color(0.237539, 0.237539, 0.237539, 1)
 
-[node name="Background3" type="ColorRect" parent="NoteEditor"]
-offset_top = 17.0
-offset_right = 256.0
-offset_bottom = 32.0
-color = Color(0.213515, 0.249755, 0.209818, 1)
+[node name="Background4" type="TextureRect" parent="NoteEditor"]
+modulate = Color(0.836383, 0.522944, 0.30619, 1)
+offset_left = -7.0
+offset_top = -2.0
+offset_right = 249.0
+offset_bottom = 15.0
+scale = Vector2(1.04457, 1.26949)
+texture = ExtResource("16_sm3u2")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Background4" type="ColorRect" parent="NoteEditor"]
-offset_right = 256.0
-offset_bottom = 16.0
-color = Color(0.299866, 0.216661, 0.172, 1)
+[node name="Background5" type="TextureRect" parent="NoteEditor"]
+modulate = Color(0.499186, 0.675418, 0.267052, 1)
+offset_left = -7.0
+offset_top = 14.0
+offset_right = 249.0
+offset_bottom = 31.0
+scale = Vector2(1.04457, 1.26949)
+texture = ExtResource("16_sm3u2")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Box1" type="Sprite2D" parent="NoteEditor"]
+position = Vector2(127, 55.5)
+scale = Vector2(0.263672, 0.279018)
+texture = ExtResource("17_xf0pi")
 
 [node name="Lines" type="Node2D" parent="NoteEditor"]
 
-[node name="horizontal1" type="ColorRect" parent="NoteEditor/Lines"]
-offset_top = 16.0
-offset_right = 256.0
-offset_bottom = 17.0
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
+[node name="LineLong" type="Sprite2D" parent="NoteEditor/Lines"]
+position = Vector2(127.25, 17.0001)
+scale = Vector2(0.253418, 0.233332)
+texture = ExtResource("18_w2c5i")
 
-[node name="horizontal2" type="ColorRect" parent="NoteEditor/Lines"]
-offset_top = 32.0
-offset_right = 256.0
-offset_bottom = 33.0
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
+[node name="LineLong2" type="Sprite2D" parent="NoteEditor/Lines"]
+position = Vector2(127, 32)
+scale = Vector2(0.253418, 0.233332)
+texture = ExtResource("18_w2c5i")
 
 [node name="horizontal3" type="ColorRect" parent="NoteEditor/Lines"]
 offset_top = 48.0
@@ -218,17 +230,16 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Notes" type="Node2D" parent="NoteEditor"]
-position = Vector2(-1024, -609)
+position = Vector2(-1017, -601)
 
 [node name="Note" parent="NoteEditor/Notes" instance=ExtResource("9_1ftms")]
-position = Vector2(1024, 609)
+position = Vector2(1015, 602)
 type = 0
 
 [node name="Background2" type="ColorRect" parent="NoteEditor"]
 offset_top = 33.0
 offset_right = 256.0
 offset_bottom = 112.0
-color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
 [node name="NoteSpawner" parent="." node_paths=PackedStringArray("notes") instance=ExtResource("11_4ofsq")]
 position = Vector2(251, 0)
@@ -241,10 +252,11 @@ offset_bottom = 112.0
 color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
 [node name="NotesLeft" type="RichTextLabel" parent="."]
-offset_left = 1024.0
-offset_top = 584.0
-offset_right = 1143.0
-offset_bottom = 625.0
+offset_left = 1013.0
+offset_top = 570.0
+offset_right = 1132.0
+offset_bottom = 611.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("15_lc52x")
 theme_override_font_sizes/normal_font_size = 24
 text = "Notes: 0"

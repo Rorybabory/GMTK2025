@@ -31,8 +31,7 @@ func _ready():
 	pass
 
 func _process(delta: float) -> void:
-	$bkg.color = colors[type][0]
-	$main.color = colors[type][1]
+	$bkg.modulate = colors[type][1]
 	if (active):
 		global_position.x -= delta * Globals.speed
 	pass
@@ -45,9 +44,9 @@ func _process(delta: float) -> void:
 				Globals.playNote.emit()
 			elif (type == NoteType.DRUM):
 				Globals.playDrums.emit()
-		$main.hide()
+		$solid.show()
 	else:
-		$main.show()
+		$solid.hide()
 	if (not active):
 		var mouse_pos : Vector2 = get_global_mouse_position()
 		if (global_position.x < mouse_pos.x and

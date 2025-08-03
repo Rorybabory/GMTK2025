@@ -1,18 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdoubd0dnmqx1"]
+[gd_scene load_steps=5 format=3 uid="uid://bdoubd0dnmqx1"]
 
 [ext_resource type="Script" uid="uid://eb3ygncsf3u" path="res://scripts/note.gd" id="1_rufh6"]
+[ext_resource type="Texture2D" uid="uid://ddonolkqxxvh" path="res://sprites/highlightBox.png" id="2_6jtft"]
+[ext_resource type="Texture2D" uid="uid://cbi0ww30fjo04" path="res://sprites/note.png" id="3_eo14v"]
+[ext_resource type="Texture2D" uid="uid://cfessy48q1v7j" path="res://sprites/note_solid.png" id="4_eo14v"]
 
 [node name="Note" type="Node2D"]
 script = ExtResource("1_rufh6")
 
-[node name="bkg" type="ColorRect" parent="."]
-offset_right = 16.0
-offset_bottom = 16.0
-color = Color(0.150665, 0.320078, 0.391417, 1)
-
-[node name="main" type="ColorRect" parent="."]
+[node name="bkg" type="TextureRect" parent="."]
 offset_left = 1.0
 offset_top = 1.0
-offset_right = 15.0
+offset_right = 16.0
 offset_bottom = 15.0
-color = Color(0.188194, 0.555341, 0.630899, 1)
+texture = ExtResource("2_6jtft")
+expand_mode = 1
+
+[node name="bkg2" type="TextureRect" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("3_eo14v")
+expand_mode = 1
+
+[node name="solid" type="TextureRect" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("4_eo14v")
+expand_mode = 1
